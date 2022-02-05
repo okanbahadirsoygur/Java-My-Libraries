@@ -20,16 +20,25 @@ class Main {
         System.out.println(rnd.randomIntegerListWithBlackList(0,20,10,blackList,true));
 
         List<String> menuItems = new ArrayList<>();
-        menuItems.add("Random Sayi");
-        menuItems.add("Deneme");
+        menuItems.add("RRandom");
+        menuItems.add("FFile");
+        menuItems.add("Ui");
 
         Ui ui = new Ui("ID","İşlemler","Arasında bir işlem seçin",menuItems);
         ui.colorGreen();
         ui.draw();
         ui.breakLine();
-        ui.colorRed();
-        ui.pushMessage("Sonuç:",false);
 
+        ui.colorBlue();
+        ui.pushMessage("Bu ",false);
+        ui.colorPruple();
+        ui.pushMessage("Bir ",false);
+        ui.colorRed();
+        ui.pushMessage("Renkli ",false);
+        ui.colorYellow();
+        ui.pushMessage("Yazı ",false);
+        ui.colorCyan();
+        ui.pushMessage("Örneği ",false);
 
 
 
