@@ -23,7 +23,12 @@ class Main {
         menuItems.add("Random Sayi");
         menuItems.add("Deneme");
 
-        Ui ui = new Ui("İşlemler","ID","Arasında bir işlem seçin",menuItems);
+        Ui ui = new Ui("ID","İşlemler","Arasında bir işlem seçin",menuItems);
+        ui.colorGreen();
+        ui.draw();
+        ui.breakLine();
+        ui.colorRed();
+        ui.pushMessage("Sonuç:",false);
 
 
 
