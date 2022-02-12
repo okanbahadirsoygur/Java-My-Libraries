@@ -73,7 +73,7 @@ public class Ui {
     public void clearScreen(){
 
 
-        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1) {
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("linux")!= -1 ||  getOs().indexOf("mac")!= -1) {
 
             //bu kod Windows'da çalışmamaktadır.
             System.out.print("\033[H\033[2J");
@@ -130,7 +130,7 @@ public class Ui {
     private void setCurrentColor(String color){
 
         //eğer sistem linux yada mac ise renk kodlarını aktif edeceğiz. Eğer windows ise renk kodları disable olacak.
-        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1){
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("linux")!= -1 ||  getOs().indexOf("mac")!= -1){
 
             this.color = color;
 
@@ -143,7 +143,7 @@ public class Ui {
 
     private String getCurrentColor(){
         //eğer sistem linux yada mac ise renk kodlarını aktif edeceğiz. Eğer windows ise renk kodları disable olacak.
-        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1){
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("linux")!= -1 ||  getOs().indexOf("mac")!= -1){
 
            return this.color;
 
