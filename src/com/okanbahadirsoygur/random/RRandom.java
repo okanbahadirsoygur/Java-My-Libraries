@@ -3,6 +3,10 @@ package com.okanbahadirsoygur.random;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author okan bahadır soygür
+ */
+
 public class RRandom {
 
 

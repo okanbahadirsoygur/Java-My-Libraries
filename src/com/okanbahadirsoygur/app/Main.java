@@ -29,6 +29,8 @@ class Main {
         ui.draw();
         ui.breakLine();
 
+
+
         ui.colorBlue();
         ui.pushMessage("Bu ",false);
         ui.colorPruple();

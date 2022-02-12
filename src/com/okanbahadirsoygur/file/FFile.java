@@ -3,6 +3,13 @@ package com.okanbahadirsoygur.file;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author okan bahadır soygür
+ *
+ * <p>Bu kütüphane macOS ve Windows arasında standart oluşturmak için yazılmıştır.
+ * Burdaki bütün fonksiyonlar iki playfromda da sorunsuz çalışmaktadır.</p>
+ */
+
 public class FFile {
 
     /**
@@ -94,6 +101,18 @@ public class FFile {
             System.out.println(hata);
             return false;
         }
+    }
+
+    /**
+     * <p>Kullanıcı klasörünün yolunu döndürür.</p>
+     *
+     * <p>maccOS etc:/Users/okanbahadirsoygur/</p>
+     * <p>Windows etc:C\Kullanıcılar\okanbahadirsoygur</p>
+     */
+
+    public String getHomeFolderPath(){
+        String path = new File("").getAbsolutePath()+File.separator;
+        return path;
     }
 
 

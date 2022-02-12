@@ -2,11 +2,19 @@ package com.okanbahadirsoygur.ui;
 
 import java.util.List;
 
+/**
+ * @author okan bahadır soygür
+ *
+ * macOS, Linux ve Windows'a uyumlu konsol tabanlı ui geliştirmek için yazılmıştır.
+ * Renk kodları Windows'da çalışmadığı için kütüphane tarafından otomatik devredışı bırakılır.
+ */
+
 public class Ui {
 
     private List<String> menuItems;
     private String title, iteratorTitle, selectMessage;
 
+    //renk kodları Windows'da çalışmıyor. O yüzden windows'da disable etmeliyiz.
     private String ANSI_RESET = "\u001B[0m";
     private String ANSI_BLACK = "\u001B[30m";
     private String ANSI_RED = "\u001B[31m";
@@ -32,9 +40,9 @@ public class Ui {
 
     public void pushMessage(String message,boolean breakLine){
         if(breakLine)
-        System.out.println(this.color+message+this.ANSI_RESET);
+        System.out.println(getCurrentColor()+message);
         else
-            System.out.print(this.color+message+this.ANSI_RESET);
+            System.out.print(getCurrentColor()+message);
     }
 
     public void breakLine(){
@@ -47,23 +55,31 @@ public class Ui {
         String heading1 = this.iteratorTitle;
         String heading2 = this.title;
 
-        System.out.printf(this.color + "%-15s %2s %n" + this.ANSI_RESET, heading1, heading2);
-        System.out.println(this.color +"-----------------------------------------------------"+ this.ANSI_RESET);
+        System.out.printf(getCurrentColor() + "%-15s %2s %n", heading1, heading2);
+        System.out.println(getCurrentColor()+"-----------------------------------------------------");
 
         for (int i = 0; i < this.menuItems.size(); i++){
 
-            System.out.printf(this.color+"%-15s %2s %n" +this.ANSI_RESET, (i+1)+")", menuItems.get(i));
+            System.out.printf(getCurrentColor()+"%-15s %2s %n", (i+1)+")", menuItems.get(i));
 
 
         }//for
 
-        System.out.println(this.color +"-----------------------------------------------------"+ this.ANSI_RESET);
-        System.out.print(this.color+"[1-"+menuItems.size()+"] "+selectMessage+":"+this.ANSI_RESET);
+        System.out.println(getCurrentColor() +"-----------------------------------------------------");
+        System.out.print(getCurrentColor()+"[1-"+menuItems.size()+"] "+selectMessage+":");
 
     }
 
     public void clearScreen(){
-        System.out.print("\033[H\033[2J");
+
+
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1) {
+
+            //bu kod Windows'da çalışmamaktadır.
+            System.out.print("\033[H\033[2J");
+        }
+
+        //her iki sistemdede çalışır.
         System.out.flush();
     }
 
@@ -72,42 +88,78 @@ public class Ui {
      */
     public void colorRed(){
 
-        this.color = this.ANSI_RED;
+        setCurrentColor(this.ANSI_RED);
+
     }
 
     public void colorBlue(){
 
-        this.color = this.ANSI_BLUE;
+        setCurrentColor(this.ANSI_BLUE);
     }
 
     public void colorBlack(){
 
-        this.color = this.ANSI_BLACK;
+        setCurrentColor(this.ANSI_BLACK);
     }
 
     public void colorYellow(){
 
-        this.color = this.ANSI_YELLOW;
+        setCurrentColor(this.ANSI_YELLOW);
     }
 
     public void colorWhite(){
 
-        this.color = this.ANSI_WHITE;
+        setCurrentColor(this.ANSI_WHITE);
     }
 
     public void colorCyan(){
 
-        this.color = this.ANSI_CYAN;
+        setCurrentColor(this.ANSI_CYAN);
     }
 
     public void colorGreen(){
 
-        this.color = this.ANSI_GREEN;
+        setCurrentColor(this.ANSI_GREEN);
     }
 
     public void colorPruple(){
 
-        this.color = this.ANSI_PURPLE;
+      setCurrentColor(this.ANSI_PURPLE);
     }
+
+    private void setCurrentColor(String color){
+
+        //eğer sistem linux yada mac ise renk kodlarını aktif edeceğiz. Eğer windows ise renk kodları disable olacak.
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1){
+
+            this.color = color;
+
+        }else{
+
+            this.color = "";
+
+        }
+    }
+
+    private String getCurrentColor(){
+        //eğer sistem linux yada mac ise renk kodlarını aktif edeceğiz. Eğer windows ise renk kodları disable olacak.
+        if(getOs().indexOf("Linux") != -1 || getOs().indexOf("Mac")!= -1 || getOs().indexOf("windows")!= -1 ||  getOs().indexOf("windows")!= -1){
+
+           return this.color;
+
+        }else{
+
+            return "";
+
+        }
+    }
+
+    private String getOs(){
+
+        String os = System.getProperty("os.name");
+        return os;
+    }
+
+
 
 }
