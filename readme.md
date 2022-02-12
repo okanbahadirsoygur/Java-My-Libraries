@@ -7,7 +7,8 @@
 
  
  
-### @developer by okan bahadır soygür (okanbahadirsoygur@gmail.com)
+### @Developed by okan bahadır soygür (okanbahadirsoygur@gmail.com)
+
 
 
 
